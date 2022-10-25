@@ -1,0 +1,33 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: kafka
+  kafka:
+    topic: topic1
+    othertopic: topic2
+    producer:
+      client-id: ${spring.application.name}-producer-stream
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      transaction-id-prefix: ${spring.application.name}
+    consumer:
+      client-id-prefix: ${spring.application.name}-consumer-stream
+      group-id: kafka_streams
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      enable-auto-commit: false
+      isolation-level: read_committed
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9094
+
+
+
+# CONSUMER
+# kafka-console-consumer --bootstrap-server localhost:9094 --topic topic2 --from-beginning
+
+# PRODUCER
+#  kafka-console-producer --bootstrap-server localhost:9094 --topic topic1
+#  {"id": "1","nome": "Fernando 0","cpf": "123","dataNascimento": "1989-10-05"}
+# {"id": "2","nome": "Fernando 1","cpf": "12345","dataNascimento": "1989-10-05"}
+# {"id": "3","nome": "Fernando 2","cpf": "12345678","dataNascimento": "1989-10-05"}
