@@ -1,31 +1,36 @@
 package br.com.fernandoguide.poc.kafkastream.event;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 import lombok.extern.jackson.Jacksonized;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-@Value
+
 @Builder
 @Jacksonized
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Entity
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Paciente {
 
-    String id;
-    String nome;
-    String documento;
-    String dataNascimento;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private  String nome;
+    private String documento;
+    private LocalDate dataNascimento;
+
 
     public  static Paciente convert(PacienteDTO p) {
         return Paciente.builder()
                 .id(p.getId())
                 .nome(p.getNome())
                 .documento(p.getCpf())
-                .dataNascimento(p.getDataNascimento().format(DateTimeFormatter.ISO_LOCAL_DATE))
+                .dataNascimento(p.getDataNascimento())
                 .build();
     }
 
