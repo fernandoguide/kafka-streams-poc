@@ -69,6 +69,14 @@ Objetos utilizado para produzir um evento
 
 ```
 
+# Docs
+
+https://kafka.apache.org/quickstart
+
+https://docs.cloudera.com/runtime/7.2.0/kafka-managing/topics/kafka-manage-cli-producer.html
+
+
+# Contact
 
 Created by Fernando Oliveira
 
