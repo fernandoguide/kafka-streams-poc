@@ -75,6 +75,8 @@ https://kafka.apache.org/quickstart
 
 https://docs.cloudera.com/runtime/7.2.0/kafka-managing/topics/kafka-manage-cli-producer.html
 
+https://developer.confluent.io/tutorials/creating-first-apache-kafka-streams-application/kstreams.html
+
 
 # Contact
 
